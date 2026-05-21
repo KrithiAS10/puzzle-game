@@ -71,6 +71,11 @@
 //         console.log(result);
 //     }
 // });
+// const move = await rl.question("Enter your move(w/a/s/d or exit):");
+// if (move.toLowerCase().trim() === "exit") {
+//     `<h5>Exit</h5>`
+//     break;
+// }
 let count = 0;
 let a = 0;
 let gameOver = false;
@@ -173,33 +178,24 @@ function play() {
         }
         console.log("Shuffled board");
         printB();
-        document.addEventListener("keydown", function (event) {
-            if (gameOver) {
-                return;
-            }
-            const move = event.key;
-            // const move = await rl.question("Enter your move(w/a/s/d or exit):");
-            // if (move.toLowerCase().trim() === "exit") {
-            //     `<h5>Exit</h5>`
-            //     break;
-            // }
-            swap(move);
-            // count++;
-            printB();
-            document.getElementById("turns").innerText = count;
-            // gameOver = comp();
-            if (comp()) {
-                document.body.innerHTML += "🎉"
-                document.getElementById("turns").innerText = "You Win in " + count + " moves";
-                gameOver = true;
-            }
-            // if (gameOver) {
-            //     return;
-            // }
-        })
     }
     catch (error) {
         console.log("Error occurred!!!")
     }
 }
 play();
+count = 0;
+document.addEventListener("keydown", function (event) {
+    if (gameOver) {
+        return;
+    }
+    const move = event.key;
+    swap(move);
+    printB();
+    document.getElementById("turns").innerText = count;
+    if (comp()) {
+        document.body.innerHTML += "🎉"
+        document.getElementById("turns").innerText = "You Win in " + count + " moves";
+        gameOver = true;
+    }
+})
