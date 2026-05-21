@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" contnet="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="puzzle.js"></script> -->
+    <!-- <script>
+        let num = Math.floor(Math.random() * 10);
+        console.log(num);
+    </script> -->
+</head>
+
+<body>
+    <button onclick="dark()">Dark</button>
+    <button onclick="light()">Light</button>
+    <img id="title" src="./heading.png">
+    <div id="orig">
+        <h5>&nbsp;&nbsp;&nbsp;&nbsp;Original Image</h5>
+        <img id="original" src="./doraemon.png">
+    </div>
+    <div id="board">
+    </div>
+    <h1>Turns: <span id="turns">0</span></h1>
+    <script src="puzzle.js"></script>
+    
+</body>
+
+</html>
