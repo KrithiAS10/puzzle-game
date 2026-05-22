@@ -109,7 +109,7 @@ let i = 0;
 let j = 0;
 let temp;
 function swap(move) {
-    if (move.toLowerCase() === "w") {
+    if (move.toLowerCase() === "w" || move === "ArrowUp") {
         if (i > 0) {
             temp = res[i][j];
             res[i][j] = res[i - 1][j];
@@ -118,7 +118,7 @@ function swap(move) {
             count++;
         }
     }
-    else if (move.toLowerCase() === "s") {
+    else if (move.toLowerCase() === "s" || move === "ArrowDown") {
         if (i < 2) {
             temp = res[i][j];
             res[i][j] = res[i + 1][j];
@@ -127,7 +127,7 @@ function swap(move) {
             count++;
         }
     }
-    else if (move.toLowerCase() === "a") {
+    else if (move.toLowerCase() === "a" || move === "ArrowLeft") {
         if (j > 0) {
             temp = res[i][j];
             res[i][j] = res[i][j - 1];
@@ -136,7 +136,7 @@ function swap(move) {
             count++;
         }
     }
-    else if (move.toLowerCase() === "d") {
+    else if (move.toLowerCase() === "d" || move === "ArrowRight") {
         if (j < 2) {
             temp = res[i][j];
             res[i][j] = res[i][j + 1];
@@ -186,6 +186,7 @@ function play() {
 play();
 count = 0;
 document.addEventListener("keydown", function (event) {
+    event.preventDefault();
     if (gameOver) {
         return;
     }
@@ -194,8 +195,7 @@ document.addEventListener("keydown", function (event) {
     printB();
     document.getElementById("turns").innerText = count;
     if (comp()) {
-        document.body.innerHTML += "🎉"
-        document.getElementById("turns").innerText = "You Win in " + count + " moves";
+        document.getElementById("turns").innerText = "You Win in " + count + " moves 🎉🎉🎉🎉🎉🎉";
         gameOver = true;
     }
 })
