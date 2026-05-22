@@ -14,18 +14,24 @@
 </head>
 
 <body>
+    <img id="title" src="./title.png">
     <div id="btn">
-        <img id="title" src="./heading.png">
-        <button onclick="dark()">Dark</button>
-        <button onclick="light()">Light</button>
+        <button id="b" onclick="dark()">Dark</button>
+        <button id="b" onclick="light()">Light</button>
+        <input type="file" id="upload" accept="image/*">
     </div>
     <div id="orig">
-        <h5>&nbsp;&nbsp;&nbsp;&nbsp;Original Image</h5>
-        <img id="original" src="./doraemon.png">
+        <div>
+            <h5>Original Image</h5>
+            <img id="original" src="./doraemon.png">
+        </div>
+        <div>
+            <div id="board"></div>
+            <h1>Turns: <span id="turns">0</span></h1>
+        </div>
     </div>
-    <div id="board">
-    </div>
-    <h1>Turns: <span id="turns">0</span></h1>
+    <!-- <div id="board"></div> -->
+
     <script src="puzzle.js"></script>
 
 </body>

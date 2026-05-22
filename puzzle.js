@@ -78,17 +78,54 @@
 // }
 let count = 0;
 let a = 0;
+let imageURL = "./doraemon.png";
 let gameOver = false;
-let orig = [["src/10.png", "src/2.png", "src/3.png"], ["src/4.png", "src/5.png", "src/6.png"], ["src/7.png", "src/8.png", "src/9.png"]];
-let res = [["src/10.png", "src/2.png", "src/3.png"], ["src/4.png", "src/5.png", "src/6.png"], ["src/7.png", "src/8.png", "src/9.png"]];
+let orig = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8]
+];
+
+let res = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8]
+];
+// let orig = [["src/10.png", "src/2.png", "src/3.png"], ["src/4.png", "src/5.png", "src/6.png"], ["src/7.png", "src/8.png", "src/9.png"]];
+// let res = [["src/10.png", "src/2.png", "src/3.png"], ["src/4.png", "src/5.png", "src/6.png"], ["src/7.png", "src/8.png", "src/9.png"]];
+// function printB() {
+//     let result = "";
+//     for (let r = 0; r < 3; r++) {
+//         for (let c = 0; c < 3; c++) {
+
+//             result += `<div class="pieces">
+//             // <img src="${res[r][c]}">
+//             <div 
+// class="pieces"
+// style="
+// background-image:url('${imageURL}');
+// background-position:${-c * 120}px ${-r * 120}px;
+// ">
+// </div>
+//         </div>`
+//         }
+//     }
+//     document.getElementById("board").innerHTML = result;
+// }
 function printB() {
     let result = "";
     for (let r = 0; r < 3; r++) {
         for (let c = 0; c < 3; c++) {
+            if (res[r][c] == 0) {
 
-            result += `<div class="pieces">
-            <img src="${res[r][c]}">
-        </div>`
+                result += `<div class="pieces"></div>`;
+            }
+            else {
+                result += `<div class="pieces" style=" background-image:url('${imageURL}'); background-position:
+${-(res[r][c] % 3) * 120}px 
+${-Math.floor(res[r][c] / 3) * 120}px; ">
+                </div>`;
+            }
         }
     }
     document.getElementById("board").innerHTML = result;
@@ -184,6 +221,21 @@ function play() {
     }
 }
 play();
+document.getElementById("upload").addEventListener("change", function (event) {
+
+    const file = event.target.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    imageURL = URL.createObjectURL(file);
+
+    document.getElementById("original").src = imageURL;
+
+    printB();
+
+});
 count = 0;
 document.addEventListener("keydown", function (event) {
     event.preventDefault();
